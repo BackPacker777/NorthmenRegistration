@@ -14,7 +14,7 @@ class main {
     constructor(counter) {
         document.getElementById("studentZip").addEventListener("change", this.loadZipData);
         document.getElementById("date").innerText = main.setDate();
-        this.counter = counter;
+        main.counter = counter;
         main.fade("in","date");
         main.fade("in","ppsLogo");
         main.fadeHousing();
@@ -23,9 +23,8 @@ class main {
         document.getElementById("livesWith").addEventListener("change", main.fadeHousing);
         document.getElementById("homeless").addEventListener("click", main.fadeHomeless);
         document.getElementById("ell").addEventListener("click", main.fadeEllHelp);
-        document.getElementById("addSibling").addEventListener("click", function(){this.counter++; new AddDivClass("sibling").addDiv(this.counter)});
+        document.getElementById("addSibling").addEventListener("click", function(){main.counter++; main.fadeSibling(main.counter)});
         document.getElementById("completed").addEventListener("click", main.docsAlert);
-        //document.getElementById("regForm").addEventListener("submit", main.processForm);
     }
 
     static setDate() {
@@ -95,6 +94,12 @@ class main {
         } else if (ell.checked) {
             main.fade("in", "ellSupport");
         }
+    }
+
+    static fadeSibling(counter) {
+        console.log(counter);
+        new AddDivClass("sibling").addDiv(counter);
+        main.fade("in", "sibRow" + counter);
     }
 
     static docsAlert() {

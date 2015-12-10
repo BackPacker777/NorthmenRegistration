@@ -14,6 +14,7 @@ export default class AddDivClass {
         if (this.whichDiv == "sibling") {
             let newSibRow = document.createElement("div");
             newSibRow.className = "row";
+            newSibRow.id = "sibRow" + counter;
             newSibRow.innerHTML = '<div class="small-2 columns">'
                                 + '<span class="label">Last Name</span><br>'
                                 + '<input name="sibLastName' + counter + '" id="sibLastName' + counter + '" placeholder="Last Name" type="text">'
@@ -43,7 +44,7 @@ export default class AddDivClass {
                                 + '<option value="7">Montessori</option>'
                                 + '</select>'
                                 + '</div>';
-            document.getElementById("siblings").appendChild(newSibRow);
+            document.getElementById("siblings").appendChild(newSibRow).style.display = 'none';
         }
     }
 }
