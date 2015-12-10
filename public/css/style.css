@@ -1,0 +1,26 @@
+body img {
+  position: fixed;
+  min-height: 100%;
+  max-width: 100%;
+  left: 30%;
+  right: 30%;
+  opacity: 0;
+  z-index: -1; }
+
+legend {
+  font-weight: bold;
+  font-size: large; }
+
+#dadAddress {
+  opacity: 0; }
+
+#momAddress {
+  opacity: 0; }
+
+#guardianInfo {
+  opacity: 0; }
+
+#guardianAddress {
+  opacity: 0; }
+
+/*# sourceMappingURL=style.css.map */

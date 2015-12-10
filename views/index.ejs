@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<!--
+	AUTHOR: hbates@northmen.org
+	VERSION: 1.0
+	CREATED: 10.15.2015.01
+	PURPOSE: PPS Student Registration Page
+	TODO: Handle results, handle all zip codes
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>PPS Student Registration</title>
+	<link href="/css/foundation.min.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+</head>
+<body id="northmenReg">
+<img src='images/PPS_Logo.png' alt='PPS Logo' id='ppsLogo'>
+
+<div class="row">
+	<div class="small-8 columns">
+		<h3>Public Schools of Petoskey - Student Registration</h3>
+	</div>
+	<div class="small-2 columns">
+		<h3 id="date"></h3>
+	</div>
+</div>
+<div class="panel radius">
+	<form id='regForm' name='regForm' action="/results" method="post" novalidate>
+		<div class="row">
+			<fieldset id='studentInfo'>
+				<legend>Student Information</legend>
+				<div class="row">
+					<div class="small-3 columns">
+						<span class="label">Last Name</span><br>
+						<input name='lastName' id='lastName' placeholder='Last Name' type='text' required>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">First Name</span><br>
+						<input name='firstName' id='firstName' placeholder='First Name' type='text' required>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">Middle Name</span><br>
+						<input name='middleName' id='middleName' placeholder='Middle Name' type='text'>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">Suffix</span><br>
+						<select name='suffix' id='suffix'>
+							<option>Choose</option>
+							<option value="Jr.">Jr.</option>
+							<option value="Senior">Sr.</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-3 columns">
+						<span class="label">Date of Birth</span><br>
+						<input name='dob' id='dob' placeholder='dob' type='date' required>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">Nickname</span><br>
+						<input name='nickName' id='nickName' placeholder='Nickname' type='text'>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">Gender</span><br>
+						<select name='gender' id='gender' required>
+							<option>Choose</option>
+							<option value="Female">Female</option>
+							<option value="Male">Male</option>
+						</select>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">Ethnicity</span><br>
+						<select name='ethnicity' id='ethnicity' required>
+							<option>Choose</option>
+							<option value="I">Native American/Alaskan Native</option>
+							<option value="A">Asian</option>
+							<option value="F">Native Hawaiian Pacific Islander</option>
+							<option value="B">Black or African American</option>
+							<option value="O">White</option>
+							<option value="H">Hispanic or Latino</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">Grade Level</span><br>
+						<input name='gradeLevel' id='gradeLevel' placeholder='Grade' type='number'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Place of Birth</span><br>
+						<input name='birthPlace' id='birthPlace' placeholder='Birth Place' type='text'>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">District of Residence</span><br>
+						<select name='districtResidence' id='districtResidence' required>
+							<option>Choose</option>
+							<option value="1">Petoskey</option>
+							<option value="2">Littlefield</option>
+							<option value="3">Pellston</option>
+							<option value="4">Harbor Springs</option>
+							<option value="5">Boyne City</option>
+							<option value="6">Charlevoix</option>
+							<option value="7">Boyne Falls</option>
+							<option value="8">East Jordan</option>
+							<option value="9">Ellsworth</option>
+							<option value="10">Inland Lakes</option>
+							<option value="11">Wolverine</option>
+							<option value="12">Mackinaw City</option>
+						</select>
+					</div>
+					<div class="small-2 columns end">
+						<span class="label">Primary Language in Home</span><br>
+						<input name='language' id='language' placeholder='Language' type='text'>
+					</div>
+					<div class="small-3 columns end">
+						<span class="label">Parent Active or Inactive Duty Military?</span><br>
+						<input type='checkbox' name='military' id="military" value='1'>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-3 columns">
+						<span class="label">Street</span><br>
+						<input name='street' id='street' placeholder='Street' type='text' required>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Zip</span><br>
+						<input name='studentZip' id='studentZip' placeholder='Zip' type='text' required>
+					</div>
+					<span id="studentCity" hidden></span><span id="studentState" hidden></span>
+
+					<div class="small-2 columns">
+						<span class="label">County</span><br>
+						<select name='county' id='county' required>
+							<option>Choose</option>
+							<option value="1">Emmet</option>
+							<option value="2">Charlevoix</option>
+							<option value="3">Antrim</option>
+							<option value="4">Cheboygan</option>
+							<option value="5">Otsego</option>
+							<option value="6">Presque Isle</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Lives With</span><br>
+						<select name='livesWith' id='livesWith' required>
+							<option value="0">Choose</option>
+							<option value="1">Parents</option>
+							<option value="2">Mother Only</option>
+							<option value="3">Father Only</option>
+							<option value="4">Mother & Stepfather</option>
+							<option value="5">Father & Stepmother</option>
+							<option value="6">Guardian</option>
+							<option value="7">Other</option>
+						</select>
+					</div>
+					<div class="small-3 columns end">
+						<span class="label">Student Requires Interpreter?</span><br>
+						<input type='checkbox' name='interpreter' id="interpreter" value='1'>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-7 columns end">
+						<input type='checkbox' name='homeless' id="homeless" value='1'><label for="homeless">Student
+							experiencing housing challenges that requires living outside home?</label>
+					</div>
+				</div>
+				<div class="row" id="homelessResidence">
+					<div class="small-12 columns end">
+						<span class="label">If student has no permanent address, where is student residing? (Check all that apply)</span><br>
+						<input type='checkbox' name='shelter' id="shelter" value='Shelter'><label for="shelter">Emergency
+							shelter</label>
+						<input type='checkbox' name='vehicle' id="vehicle" value='Vehicle'><label for="shelter">Vehicle</label>
+						<input type='checkbox' name='motel' id="motel" value='Motel'><label for="shelter">Motel/Hotel</label>
+						<input type='checkbox' name='camp' id="camp" value='Camp'><label
+								for="shelter">Campsite</label>
+						<input type='checkbox' name='couchSurfing' id="couchSurfing" value='CouchSurfing'><label
+								for="shelter">CouchSurfing</label>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset id='parentInfo'>
+				<legend>Parent/Guardian Information</legend>
+				<div class="row">
+					<div class="small-3 columns">
+						<span class="label">Mother's Employer</span><br>
+						<input name='momEmployer' id='momEmployer' placeholder='Employer' type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Mother Work Phone</span><br>
+						<input name='momWorkPhone' id='momWorkPhone' placeholder='Mother Work Phone' type='tel'>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">Father's Employer</span><br>
+						<input name='dadEmployer' id='dadEmployer' placeholder='Employer' type='text'>
+					</div>
+					<div class="small-2 columns end">
+						<span class="label">Father Work Phone</span><br>
+						<input name='dadWorkPhone' id='dadWorkPhone' placeholder='Father Phone' type='tel'>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">Mother's Name</span><br>
+						<select name='motherTitle' id='motherTitle' required>
+							<option>Choose</option>
+							<option value="Mrs.">Mrs.</option>
+							<option value="Ms.">Ms.</option>
+							<option value="Miss">Miss</option>
+							<option value="Dr.">Dr.</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='momLastName' id='momLastName' placeholder='Last Name' type='text'>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='momFirstName' id='momFirstName' placeholder='First Name' type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Mother Email</span><br>
+						<input name='momEmail' id='momEmail' placeholder='Mother Email' type='email'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Mother Phone</span><br>
+						<input name='momPhone1' id='momPhone1' placeholder='Mother Phone' type='tel'>
+					</div>
+					<div class="small-1 columns end">
+						<span class="label">Phone Type</span><br>
+						<select name='momPhone1Type' id='momPhone1Type' required>
+							<option>Type</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+				</div>
+				<div class="row" id="momAddress">
+					<div class="small-3 columns">
+						<span class="label">Mother's Street</span><br>
+						<input name='momStreet' id='momStreet' placeholder='Street' type='text' required>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Mother's Zip</span><br>
+						<input name='momZip' id='momZip' placeholder='Zip' type='text' required>
+					</div>
+					<div class="small-7 columns end">
+						<br><input type='checkbox' name='momRequiredMailing' id="momRequiredMailing"
+						           value='1'><label for="momRequiredMailing">Requires Mailings?</label>
+						<input type='checkbox' name='momEmergencyContact' id="momEmergencyContact"
+						       value='1'><label for="momEmergencyContact">Emergency Contact?</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">Father's Name</span><br>
+						<select name='fatherTitle' id='fatherTitle' required>
+							<option>Choose</option>
+							<option value="Mr.">Mr.</option>
+							<option value="Dr.">Dr.</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='dadLastName' id='dadLastName' placeholder='Last Name' type='text'>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='dadFirstName' id='dadFirstName' placeholder='First Name' type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Father Email</span><br>
+						<input name='dadEmail' id='dadEmail' placeholder='Father Email' type='email'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Father Phone</span><br>
+						<input name='dadPhone1' id='dadPhone1' placeholder='Father Phone' type='tel'>
+					</div>
+					<div class="small-1 columns end">
+						<span class="label">Phone Type</span><br>
+						<select name='dadPhone1Type' id='dadPhone1Type' required>
+							<option>Type</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+				</div>
+				<div class="row" id="dadAddress">
+					<div class="small-3 columns">
+						<span class="label">Father's Street</span><br>
+						<input name='dadStreet' id='dadStreet' placeholder='Street' type='text' required>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Father's Zip</span><br>
+						<input name='dadZip' id='dadZip' placeholder='Zip' type='text' required>
+					</div>
+					<div class="small-7 columns end">
+						<br><input type='checkbox' name='dadRequiredMailing' id="dadRequiredMailing"
+						           value='1'><label for="dadRequiredMailing">Requires Mailings?</label>
+						<input type='checkbox' name='dadEmergencyContact' id="dadEmergencyContact"
+						       value='1'><label for="dadEmergencyContact">Emergency Contact?</label>
+					</div>
+				</div>
+				<div class="row" id="guardianInfo">
+					<div class="small-2 columns">
+						<span class="label">Guardian's Name</span><br>
+						<select name='guardianTitle' id='guardianTitle' required>
+							<option>Choose</option>
+							<option value="Mr.">Mr.</option>
+							<option value="Dr.">Dr.</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='guardianLastName' id='guardianLastName' placeholder='Last Name'
+						           type='text'>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='guardianFirstName' id='guardianFirstName' placeholder='First Name'
+						           type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Guardian Email</span><br>
+						<input name='guardianEmail' id='guardianEmail' placeholder='Guardian Email' type='email'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Guardian Phone</span><br>
+						<input name='guardianPhone1' id='guardianPhone1' placeholder='Guardian Phone' type='tel'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Phone Type</span><br>
+						<select name='guardianPhone1Type' id='guardianPhone1Type' required>
+							<option>Choose</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Work">Work</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+				</div>
+				<div class="row" id="guardianAddress">
+					<div class="small-3 columns">
+						<span class="label">Guardian's Street</span><br>
+						<input name='guardianStreet' id='guardianStreet' placeholder='Street' type='text'
+						       required>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Guardian's Zip</span><br>
+						<input name='guardianZip' id='guardianZip' placeholder='Zip' type='text' required>
+					</div>
+					<div class="small-7 columns end">
+						<br><input type='checkbox' name='guardianRequiredMailing' id="guardianRequiredMailing"
+						           value='1'><label for="guardianRequiredMailing">Requires Mailings?</label>
+						<input type='checkbox' name='guardianEmergencyContact' id="guardianEmergencyContact"
+						       value='1'><label for="guardianEmergencyContact">Emergency Contact?</label>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset id='priorSchool'>
+				<legend>Previous Attended School</legend>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">School Name</span><br>
+						<input name='oldSchoolName' id='oldSchoolName' placeholder='School Name' type='text'>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">Street</span><br>
+						<input name='oldSchoolStreet' id='oldSchoolStreet' placeholder='Street Address'
+						       type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Zip</span><br>
+						<input name='oldSchoolZip' id='oldSchoolZip' placeholder='Zip Code' type='number'>
+					</div>
+					<div class="small-2 columns end">
+						<span class="label">Phone</span><br>
+						<input name='oldSchoolPhone' id='oldSchoolPhone' placeholder='Phone Number' type='tel'>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset id='siblings'>
+				<legend>Siblings in Petoskey Schools</legend>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">Last Name</span><br>
+						<input name='sibLastName' id='sibLastName' placeholder='Last Name' type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">First Name</span><br>
+						<input name='sibFirstName' id='sibFirstName' placeholder='First Name' type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">DoB</span><br>
+						<input name='sibDob' id='sibDob' type='date'>
+					</div>
+					<div class="small-1 columns">
+						<span class="label">Grade</span><br>
+						<input name='sibGrade' id='sibGrade' placeholder='Grade' type='number'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">School</span><br>
+						<select name='sibSchool' id='sibSchool' required>
+							<option>Choose</option>
+							<option value="1">Central</option>
+							<option value="2">Lincoln</option>
+							<option value="3">Ottawa</option>
+							<option value="4">Sheridan</option>
+							<option value="5">Middle School</option>
+							<option value="6">High School</option>
+							<option value="7">Montessori</option>
+						</select>
+					</div>
+					<div class="small-2 columns end">
+						<br><span class="button hollow success" id="addSibling">Add Another</span>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset id='emergencyInfo'>
+				<legend>Emergency/Medical Information</legend>
+				<div class="row">
+					<div class="small-3 columns">
+						<span class="label">Doctor</span><br>
+						<input name='doctor' id='doctor' placeholder='Doctor Name' type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Doctor Phone</span><br>
+						<input name='doctorPhone' id='doctorPhone' placeholder='Doctor Phone' type='tel'>
+					</div>
+					<div class="small-3 columns">
+						<span class="label">Dentist</span><br>
+						<input name='dentist' id='dentist' placeholder='Dentist Name' type='text'>
+					</div>
+					<div class="small-2 columns end">
+						<span class="label">Dentist Phone</span><br>
+						<input name='dentistPhone' id='dentistPhone' placeholder='Dentist Phone' type='tel'>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-6 columns end">
+						<input type='checkbox' name='takeHospital' id="takeHospital" value='1'><label
+								for="takeHospital">If emergency occurs, please take student to nearest medical
+							facility?</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns end">
+						<span class="label">Medications & Special Health Needs</span><br>
+						<textarea id="meds"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">Emergency Contact 1 Name</span><br>
+						<select name='ContactTitle1' id='ContactTitle1'>
+							<option>Choose</option>
+							<option value="Mrs.">Mrs.</option>
+							<option value="Ms.">Ms.</option>
+							<option value="Miss">Miss</option>
+							<option value="Mr.">Mr.</option>
+							<option value="Dr.">Dr.</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='ContactLastName1' id='ContactLastName1' placeholder='Last Name'
+						           type='text'>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='ContactFirstName1' id='ContactFirstName1' placeholder='First Name'
+						           type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Contact Phone 1</span><br>
+						<input name='Contact1Phone1' id='Contact1Phone1' placeholder='Contact Phone' type='tel'>
+					</div>
+					<div class="small-1 columns">
+						<span class="label">Phone 1 Type</span><br>
+						<select name='Contact1Phone1Type' id='Contact1Phone1Type'>
+							<option>Type</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Work">Work</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Contact Phone 2</span><br>
+						<input name='Contact1Phone2' id='Contact1Phone2' placeholder='Contact Phone' type='tel'>
+					</div>
+					<div class="small-1 columns">
+						<span class="label">Phone 2 Type</span><br>
+						<select name='Contact1Phone2Type' id='Contact1Phone2Type'>
+							<option>Type</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Work">Work</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">Emergency Contact 2 Name</span><br>
+						<select name='ContactTitle2' id='ContactTitle2'>
+							<option>Choose</option>
+							<option value="Mrs.">Mrs.</option>
+							<option value="Ms.">Ms.</option>
+							<option value="Miss">Miss</option>
+							<option value="Mr.">Mr.</option>
+							<option value="Dr.">Dr.</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='ContactLastName2' id='ContactLastName2' placeholder='Last Name'
+						           type='text'>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='ContactFirstName2' id='ContactFirstName2' placeholder='First Name'
+						           type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Contact Phone 1</span><br>
+						<input name='Contact2Phone1' id='Contact2Phone1' placeholder='Contact Phone' type='tel'>
+					</div>
+					<div class="small-1 columns">
+						<span class="label">Phone 1 Type</span><br>
+						<select name='Contact2Phone1Type' id='Contact2Phone1Type'>
+							<option>Type</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Work">Work</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Contact Phone 2</span><br>
+						<input name='Contact2Phone2' id='Contact2Phone2' placeholder='Contact Phone' type='tel'>
+					</div>
+					<div class="small-1 columns">
+						<span class="label">Phone 2 Type</span><br>
+						<select name='Contact2Phone2Type' id='Contact2Phone2Type'>
+							<option>Type</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Work">Work</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">Emergency Contact 3 Name</span><br>
+						<select name='ContactTitle3' id='ContactTitle3'>
+							<option>Choose</option>
+							<option value="Mrs.">Mrs.</option>
+							<option value="Ms.">Ms.</option>
+							<option value="Miss">Miss</option>
+							<option value="Mr.">Mr.</option>
+							<option value="Dr.">Dr.</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='ContactLastName3' id='ContactLastName3' placeholder='Last Name'
+						           type='text'>
+					</div>
+					<div class="small-2 columns">
+						<br><input name='ContactFirstName3' id='ContactFirstName3' placeholder='First Name'
+						           type='text'>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Contact Phone 1</span><br>
+						<input name='Contact3Phone1' id='Contact3Phone1' placeholder='Contact Phone' type='tel'>
+					</div>
+					<div class="small-1 columns">
+						<span class="label">Phone 1 Type</span><br>
+						<select name='Contact3Phone1Type' id='Contact3Phone1Type'>
+							<option>Type</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Work">Work</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div class="small-2 columns">
+						<span class="label">Contact Phone 2</span><br>
+						<input name='Contact3Phone2' id='Contact3Phone2' placeholder='Contact Phone' type='tel'>
+					</div>
+					<div class="small-1 columns">
+						<span class="label">Phone 2 Type</span><br>
+						<select name='Contact3Phone2Type' id='Contact3Phone2Type'>
+							<option>Type</option>
+							<option value="Cell">Cell</option>
+							<option value="Home">Home</option>
+							<option value="Work">Work</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset id='supports'>
+				<legend>Student Previous Services or Supports</legend>
+				<div class="row">
+					<div class="small-2 columns">
+						<span class="label">Does new student qualify for or receive help in any of the following areas? (Please select all that apply)</span><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="specialEd"
+						       value='Special Education'><label>Special Education (IEP on file)</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="tbi"
+						       value='Traumatic Brain Injury (TBI)'><label>Traumatic Brain Injury (TBI)</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="bp" value='Behavior Plan'><label>Behavior
+							Plan</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="gt" value='Gifted/Talented'><label>Gifted/Talented</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="rr" value='Resource Room'><label>Resource
+							Room</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="hi"
+						       value='Physically or Health Impaired'><label>Physically or Health Impaired</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="st"
+						       value='Special Transportation'><label>Special Transportation</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="counseling" value='Counseling'><label>Counseling</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="cr" value='Categorical Room'><label>Categorical
+							Room</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="autism" value='Austic/Aspergers'><label>Austic/Aspergers</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="s504" value='Section 504'><label>Section
+							504</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="creditRecover"
+						       value='Credit Recovery'><label>Credit Recovery</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="adhd"
+						       value='ADD/ADHD'><label>ADD/ADHD</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="hearImp" value='Hearing Impared'><label>Hearing
+							Impared</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="title1"
+						       value='Title 1 or Section 31A'><label>Title 1 or Section 31A</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="ct" value='Career Tech'><label>Career
+							Tech</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="sl" value='Speech/Language'><label>Speech/Language</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="vi" value='Visually Impared'><label>Visually
+							Impared</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="diab"
+						       value='Diabetes'><label>Diabetes</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="ap" value='AP'><label>AP</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="ld" value='Learning Disability'><label>Learning
+							Disability</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="ei" value='Emotionally Impared'><label>Emotionally
+							Impared</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="asthma"
+						       value='Asthma'><label>Asthma</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="de"
+						       value='Dual Enrollment/Early College'><label>Dual Enrollment/Early College</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id=ci"" value='Special Education'><label>Cognitively
+							Impared</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="epilepsy" value='Epilepsy'><label>Epilepsy</label>
+					</div>
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="tm" value='Tutor/Mentor'><label>Tutor/Mentor</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns">
+						<input type='checkbox' name='specialServices' id="attendance" value='Attendance'><label>Attendance</label>
+					</div>
+					<div class="small-4 columns end">
+						<input type='checkbox' name='specialServices' id="ell"
+						       value='English Language Learner'><label>English Language Learner</label>
+					</div>
+					<div class="small-4 columns end" id="ellSupport">
+						<input type='checkbox' name='specialServices' id="ellHelp"
+						       value='ELL Help Requested'><label>Do you wish ELL support?</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns">
+						<input type='checkbox' name='specialServices' id="allergies" value='Allergies'><label>Allergies:</label>
+					</div>
+					<div class="small-10 columns">
+						<input name='allergiesText' id='allergiesText' placeholder='Allergies' type='text'>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-2 columns">
+						<input type='checkbox' name='specialServices' id="other"
+						       value='other'><label>Other:</label>
+					</div>
+					<div class="small-10 columns">
+						<input name='otherText' id='otherText' placeholder='Other' type='text'>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="row">
+			<div class="small-10 columns">
+				<input type='submit' id='completed' value='Completed!' class="button">
+			</div>
+			<div class="small-2 columns">
+				<input type='reset' id='reset' value='Reset Form' class="button alert">
+			</div>
+		</div>
+	</form>
+</div>
+
+<!-- SCRIPTS -->
+<script src="/scripts/bundle.js"></script>
+</body>
+</html>
