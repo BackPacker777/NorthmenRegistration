@@ -10,7 +10,7 @@ import ProcessData from './ProcessData';
 
 class main {
     constructor() {
-
+        new ProcessData();
     }
 
 

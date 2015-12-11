@@ -8,7 +8,8 @@
 
 export default class ProcessData {
     constructor() {
-
+        let output = "Module 'Process Data' created.";
+        console.log(output);
     }
 
 }

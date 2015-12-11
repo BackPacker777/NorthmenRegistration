@@ -4,11 +4,11 @@
     <TaskOptions isEnabled="true">
       <option name="arguments" value="--webpack.config.babel.js" />
       <option name="checkSyntaxErrors" value="false" />
-      <option name="description" value="" />
+      <option name="description" value="For client scripts" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="js" />
       <option name="immediateSync" value="true" />
-      <option name="name" value="WebPack" />
+      <option name="name" value="WebPack.JS" />
       <option name="output" value="" />
       <option name="outputFilters">
         <array />
@@ -23,17 +23,17 @@
     <TaskOptions isEnabled="true">
       <option name="arguments" value="--webpack.config.babel.js" />
       <option name="checkSyntaxErrors" value="false" />
-      <option name="description" value="" />
+      <option name="description" value="For server scripts" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="js" />
       <option name="immediateSync" value="true" />
-      <option name="name" value="NodeWebPack" />
+      <option name="name" value="WebPack.node" />
       <option name="output" value="" />
       <option name="outputFilters">
         <array />
       </option>
       <option name="outputFromStdout" value="false" />
-      <option name="program" value="C:/Program Files/nodejs/node.exe" />
+      <option name="program" value="C:/Program Files/nodejs/webpack.cmd" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="false" />
       <option name="workingDir" value="Z:\NCMC\NorthmenRegistration\public\node" />
