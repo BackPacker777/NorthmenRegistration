@@ -86,7 +86,8 @@
 	        document.getElementById("homeless").addEventListener("click", main.fadeHomeless);
 	        document.getElementById("ell").addEventListener("click", main.fadeEllHelp);
 	        document.getElementById("addSibling").addEventListener("click", function () {
-	            main.counter++;main.fadeSibling(main.counter);
+	            main.counter++;
+	            main.fadeSibling(main.counter);
 	        });
 	        document.getElementById("completed").addEventListener("click", main.docsAlert);
 	    }
@@ -169,7 +170,6 @@
 	    }, {
 	        key: 'fadeSibling',
 	        value: function fadeSibling(counter) {
-	            console.log(counter);
 	            new _AddDivClass2.default("sibling").addDiv(counter);
 	            main.fade("in", "sibRow" + counter);
 	        }

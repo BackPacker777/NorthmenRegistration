@@ -15,15 +15,18 @@ class main {
         document.getElementById("studentZip").addEventListener("change", this.loadZipData);
         document.getElementById("date").innerText = main.setDate();
         main.counter = counter;
-        main.fade("in","date");
-        main.fade("in","ppsLogo");
+        main.fade("in", "date");
+        main.fade("in", "ppsLogo");
         main.fadeHousing();
         main.fadeHomeless();
         main.fadeEllHelp();
         document.getElementById("livesWith").addEventListener("change", main.fadeHousing);
         document.getElementById("homeless").addEventListener("click", main.fadeHomeless);
         document.getElementById("ell").addEventListener("click", main.fadeEllHelp);
-        document.getElementById("addSibling").addEventListener("click", function(){main.counter++; main.fadeSibling(main.counter)});
+        document.getElementById("addSibling").addEventListener("click", function () {
+            main.counter++;
+            main.fadeSibling(main.counter)
+        });
         document.getElementById("completed").addEventListener("click", main.docsAlert);
     }
 
@@ -38,7 +41,7 @@ class main {
 
     loadZipData() {
         let zipData = new LoadDataClass();
-        zipData.loadData("data/ZipCodeDatabase.csv",  function(finalData) {
+        zipData.loadData("data/ZipCodeDatabase.csv", function (finalData) {
             let zip = document.getElementById("studentZip").value;
             for (let i = 0; i < finalData.length; i++) {
                 if (zip == finalData[i][0]) {
@@ -65,12 +68,12 @@ class main {
             main.fade("out", "momAddress");
             main.fade("out", "guardianInfo");
             main.fade("out", "guardianAddress");
-        }  else if (livesWith.options[livesWith.selectedIndex].value == 3 || livesWith.options[livesWith.selectedIndex].value == 5) {
+        } else if (livesWith.options[livesWith.selectedIndex].value == 3 || livesWith.options[livesWith.selectedIndex].value == 5) {
             main.fade("out", "dadAddress");
             main.fade("in", "momAddress");
             main.fade("out", "guardianInfo");
             main.fade("out", "guardianAddress");
-        }  else if (livesWith.options[livesWith.selectedIndex].value == 6) {
+        } else if (livesWith.options[livesWith.selectedIndex].value == 6) {
             main.fade("out", "dadAddress");
             main.fade("out", "momAddress");
             main.fade("in", "guardianInfo");
@@ -97,7 +100,6 @@ class main {
     }
 
     static fadeSibling(counter) {
-        console.log(counter);
         new AddDivClass("sibling").addDiv(counter);
         main.fade("in", "sibRow" + counter);
     }
@@ -108,6 +110,6 @@ class main {
     }
 }
 
-window.onload = function() {
+window.onload = function () {
     new main(0);
 };
