@@ -41,7 +41,7 @@ class main {
 
     loadZipData() {
         let zipData = new LoadDataClass();
-        zipData.loadData("data/ZipCodeDatabase.csv", function (finalData) {
+        zipData.loadData("../data/ZipCodeDatabase.csv", function (finalData) {
             let zip = document.getElementById("studentZip").value;
             for (let i = 0; i < finalData.length; i++) {
                 if (zip == finalData[i][0]) {

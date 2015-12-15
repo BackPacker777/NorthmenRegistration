@@ -96,7 +96,7 @@
 	        key: 'loadZipData',
 	        value: function loadZipData() {
 	            var zipData = new _LoadDataClass2.default();
-	            zipData.loadData("data/ZipCodeDatabase.csv", function (finalData) {
+	            zipData.loadData("../data/ZipCodeDatabase.csv", function (finalData) {
 	                var zip = document.getElementById("studentZip").value;
 	                for (var i = 0; i < finalData.length; i++) {
 	                    if (zip == finalData[i][0]) {
