@@ -1,5 +1,10 @@
-var express = require('express');
-var router = express.Router();
+"use strict";
+
+const express = require('express');
+const router = express.Router();
+const ProcessData = require('../public/node/ProcessData');
+
+//var processor = new ProcessData();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -7,6 +12,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/results', function (req, res) {
+    new ProcessData(req.body);
     res.render('results', req.body);
 });
 

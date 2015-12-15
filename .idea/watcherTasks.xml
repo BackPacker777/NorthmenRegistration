@@ -20,7 +20,7 @@
       <option name="workingDir" value="Z:\NCMC\NorthmenRegistration\public\scripts" />
       <envs />
     </TaskOptions>
-    <TaskOptions isEnabled="true">
+    <TaskOptions isEnabled="false">
       <option name="arguments" value="--webpack.config.babel.js" />
       <option name="checkSyntaxErrors" value="false" />
       <option name="description" value="For server scripts" />

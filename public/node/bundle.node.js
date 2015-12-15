@@ -42,58 +42,37 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*  AUTHOR: hbates@northmen.org
-	 *  VERSION: 1.10
-	 *  CREATED: 11.25.2015
-	 *  PURPOSE: Register Northmen!
-	 */
-
-	"use strict";
-
-	var _ProcessData = __webpack_require__(1);
-
-	var _ProcessData2 = _interopRequireDefault(_ProcessData);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var main = function main() {
-	    _classCallCheck(this, main);
-
-	    new _ProcessData2.default();
-	};
-
-	new main();
-
-/***/ },
-/* 1 */
 /***/ function(module, exports) {
 
 	/*  AUTHOR: hbates@northmen.org
-	 *  VERSION: 1.10
+	 *  VERSION: 1.11
 	 *  CREATED: 11.25.2015
 	 *  PURPOSE: Register Northmen!
 	 */
 
 	"use strict";
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var ProcessData = function ProcessData() {
-	    _classCallCheck(this, ProcessData);
+	var ProcessData = (function () {
+	    function ProcessData() {
+	        _classCallCheck(this, ProcessData);
 
-	    var output = "Module 'Process Data' created.";
-	    console.log(output);
-	};
+	        var output = "Module: 'Process Data' created.";
+	        console.log(output);
+	    }
 
-	exports.default = ProcessData;
+	    _createClass(ProcessData, null, [{
+	        key: "echoStuff",
+	        value: function echoStuff() {
+	            console.log('Hello Kitty & Friends!');
+	        }
+	    }]);
+
+	    return ProcessData;
+	})();
 
 /***/ }
 /******/ ]);
