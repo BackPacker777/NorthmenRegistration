@@ -8,18 +8,12 @@
 
 class ProcessData {
     constructor(formData) {
-        let output = "Module: 'Process Data' created.";
-        ProcessData.echoStuff(output);
         ProcessData.processFormData(formData);
-    }
-
-    static echoStuff(output) {
-        console.log(output);
     }
 
     static processFormData(formData) {
         for (let key in formData) {
-            console.log(key + ": " + formData[key]);
+            console.log(key + "," + formData[key]);
         }
     }
 }

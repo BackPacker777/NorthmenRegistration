@@ -12,7 +12,10 @@ import AddDivClass from './AddDivClass';
 
 class main {
     constructor(counter) {
-        document.getElementById("studentZip").addEventListener("change", this.loadZipData);
+        document.getElementById("studentZip").addEventListener("change", function() {main.loadZipData("student")}, false); //http://stackoverflow.com/questions/2373995/javascript-addeventlistener-event-fires-on-page-load
+        document.getElementById("momZip").addEventListener("input", function() {main.loadZipData("mom")}, false);
+        document.getElementById("dadZip").addEventListener("input", function() {main.loadZipData("dad")}, false);
+        document.getElementById("guardianZip").addEventListener("input", function() {main.loadZipData("guardian")}, false);
         document.getElementById("date").innerText = main.setDate();
         main.counter = counter;
         main.fade("in", "date");
@@ -23,9 +26,9 @@ class main {
         document.getElementById("livesWith").addEventListener("change", main.fadeHousing);
         document.getElementById("homeless").addEventListener("click", main.fadeHomeless);
         document.getElementById("ell").addEventListener("click", main.fadeEllHelp);
-        document.getElementById("addSibling").addEventListener("click", function () {
+        document.getElementById("addSibling").addEventListener("click", function() {
             main.counter++;
-            main.fadeSibling(main.counter)
+            main.fadeSibling(main.counter);
         });
         document.getElementById("completed").addEventListener("click", main.docsAlert);
     }
@@ -39,16 +42,17 @@ class main {
         return month + "/" + day + "/" + year;
     }
 
-    loadZipData() {
+    static loadZipData(whichPerson) {
         let zipData = new LoadDataClass();
-        zipData.loadData("../data/ZipCodeDatabase.csv", function (finalData) {
-            let zip = document.getElementById("studentZip").value;
+        zipData.loadData("../data/ZipCodeDatabase.csv", function(finalData) {
+            let zip = document.getElementById(whichPerson + "Zip").value;
             for (let i = 0; i < finalData.length; i++) {
                 if (zip == finalData[i][0]) {
-                    document.getElementById("studentCity").innerText = finalData[i][1];
-                    document.getElementById("studentState").innerText = finalData[i][2];
+                    document.getElementById(whichPerson + "City").value = finalData[i][1];
+                    document.getElementById(whichPerson + "State").value = finalData[i][2];
                 }
             }
+        console.log(document.getElementById(whichPerson + "City").value);
         });
     }
 

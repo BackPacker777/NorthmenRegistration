@@ -1,15 +1,28 @@
-<!DOCTYPE html>
-<!--
-  AUTHOR:   hbates@northmen.org
--->
-<html lang="en">
-	<head>
-		<title><%= title %> Results</title>
-		<link rel='stylesheet' href='css/style.css' />
-	</head>
-	<body>
-		<h1>Results:</h1>
-		<h2>Student:</h2> <span><%= [01]last_Name %>, <%= [01]first_Name %> <%= [01]middle_Name %></span>
-		<h2>DOB</h2> <span><%= [01]dob %></span> <h2>Gender:</h2><span><%= [01]gender %></span>
-	</body>
-</html>
+<% include ./head %>
+<body>
+	<div class="row">
+		<div class="small-12 columns">
+			<h2>Student Submission:</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+			<span class="label">Student:</span> <span><%= last_name %>, <%= first_name %> <%= middle_name %></span>
+		</div>
+		<div class="small-2 columns">
+			<span class="label">DOB:</span> <span><%= dob %></span>
+		</div>
+		<div class="small-2 columns">
+			<span class="label">Gender:</span> <span><%= gender %></span>
+		</div>
+		<div class="small-1 columns end">
+			<span class="label">Grade:</span> <span><%= grade_level %></span>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="small-6 columns">
+			<span class="label">Address:</span> <span><%= studentStreet %> <%= studentCity %>, <%= studentState %> <%= studentZip %></span>
+		</div>
+	</div>
+</body>

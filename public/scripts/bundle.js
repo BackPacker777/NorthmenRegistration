@@ -74,7 +74,18 @@
 	    function main(counter) {
 	        _classCallCheck(this, main);
 
-	        document.getElementById("studentZip").addEventListener("change", this.loadZipData);
+	        document.getElementById("studentZip").addEventListener("change", function () {
+	            main.loadZipData("student");
+	        }, false); //http://stackoverflow.com/questions/2373995/javascript-addeventlistener-event-fires-on-page-load
+	        document.getElementById("momZip").addEventListener("input", function () {
+	            main.loadZipData("mom");
+	        }, false);
+	        document.getElementById("dadZip").addEventListener("input", function () {
+	            main.loadZipData("dad");
+	        }, false);
+	        document.getElementById("guardianZip").addEventListener("input", function () {
+	            main.loadZipData("guardian");
+	        }, false);
 	        document.getElementById("date").innerText = main.setDate();
 	        main.counter = counter;
 	        main.fade("in", "date");
@@ -92,21 +103,7 @@
 	        document.getElementById("completed").addEventListener("click", main.docsAlert);
 	    }
 
-	    _createClass(main, [{
-	        key: 'loadZipData',
-	        value: function loadZipData() {
-	            var zipData = new _LoadDataClass2.default();
-	            zipData.loadData("../data/ZipCodeDatabase.csv", function (finalData) {
-	                var zip = document.getElementById("studentZip").value;
-	                for (var i = 0; i < finalData.length; i++) {
-	                    if (zip == finalData[i][0]) {
-	                        document.getElementById("studentCity").innerText = finalData[i][1];
-	                        document.getElementById("studentState").innerText = finalData[i][2];
-	                    }
-	                }
-	            });
-	        }
-	    }], [{
+	    _createClass(main, null, [{
 	        key: 'setDate',
 	        value: function setDate() {
 	            var date = new Date();
@@ -115,6 +112,21 @@
 	            var year = date.getFullYear();
 	            //let weekDay = date.getDay(); //For future use!
 	            return month + "/" + day + "/" + year;
+	        }
+	    }, {
+	        key: 'loadZipData',
+	        value: function loadZipData(whichPerson) {
+	            var zipData = new _LoadDataClass2.default();
+	            zipData.loadData("../data/ZipCodeDatabase.csv", function (finalData) {
+	                var zip = document.getElementById(whichPerson + "Zip").value;
+	                for (var i = 0; i < finalData.length; i++) {
+	                    if (zip == finalData[i][0]) {
+	                        document.getElementById(whichPerson + "City").value = finalData[i][1];
+	                        document.getElementById(whichPerson + "State").value = finalData[i][2];
+	                    }
+	                }
+	                console.log(document.getElementById(whichPerson + "City").value);
+	            });
 	        }
 	    }, {
 	        key: 'fade',
