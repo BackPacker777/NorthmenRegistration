@@ -15,7 +15,7 @@ class MailData {
     }
 
     static sendMail(email, filePath) {
-        email.addTo("hbates@northmen.org");
+        email.addTo("secretarialstaff@petoskeyschools.org");
         email.setFrom("NORTHMEN-REGISTRATION@PETOSKEYSCHOOLS.ORG");
         email.setSubject("Someone wants to be a Northmen!");
         email.setText('Please see attachment');
