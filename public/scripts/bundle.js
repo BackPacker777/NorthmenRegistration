@@ -125,7 +125,6 @@
 	                        document.getElementById(whichPerson + "State").value = finalData[i][2];
 	                    }
 	                }
-	                console.log(document.getElementById(whichPerson + "City").value);
 	            });
 	        }
 	    }, {
