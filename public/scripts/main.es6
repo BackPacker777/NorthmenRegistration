@@ -38,7 +38,7 @@ class main {
         let month = date.getMonth() + 1;
         let day = date.getDate();
         let year = date.getFullYear();
-        //let weekDay = date.getDay(); //For future use!
+        //let weekDay = date.getDay(); //For future use, maybe!
         return month + "/" + day + "/" + year;
     }
 
@@ -113,6 +113,6 @@ class main {
     }
 }
 
-window.onload = function () {
+window.onload = function() {
     new main(0);
 };
