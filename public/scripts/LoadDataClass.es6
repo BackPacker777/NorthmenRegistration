@@ -1,5 +1,5 @@
 /*  AUTHOR: hbates@northmen.org
- *  VERSION: 1.0
+ *  VERSION: 1.0.0
  *  CREATED: 11.25.2015
  */
 

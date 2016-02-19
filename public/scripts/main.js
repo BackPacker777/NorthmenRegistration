@@ -1,5 +1,5 @@
 /*  AUTHOR: hbates@northmen.org
- *  VERSION: 1.10
+ *  VERSION: 1.11
  *  CREATED: 11.25.2015
  *  PURPOSE: Register Northmen!
  */
@@ -109,7 +109,7 @@ class main {
 
     static docsAlert() {
         alert('Additional documentation is required. Original or certified copy of birth certificate, ' +
-            'immunizations must be up to date or we must have a waiver from the Health Department, and we require Proof of Residency.');
+            'immunizations must be up to date or we must have a waiver from the Health Department, & we require Proof of Residency.');
     }
 }
 
