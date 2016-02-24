@@ -23,4 +23,7 @@ legend {
 #guardianAddress {
   opacity: 0; }
 
+:required {
+  background: yellow; }
+
 /*# sourceMappingURL=style.css.map */

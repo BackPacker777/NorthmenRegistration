@@ -30,3 +30,7 @@ legend {
 #guardianAddress {
   opacity: 0;
 }
+
+:required {
+  background: yellow;
+}

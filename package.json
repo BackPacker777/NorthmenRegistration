@@ -16,6 +16,7 @@
     "eslint": "latest",
     "express": "latest",
     "sendgrid": "latest",
+    "serve-favicon": "latest",
     "webpack": "latest"
   },
   "devDependencies": {
