@@ -83,7 +83,7 @@
 							<span class="label">Place of Birth</span><br>
 							<input name='[Students.S_MI_STU_GC_X]immPlaceOfBirth' id='birthPlace' placeholder='Birth Place' type='text'>
 						</div>
-						<div class="small-3 columns">
+						<div class="small-2 columns">
 							<span class="label">District of Residence</span><br>
 							<select name='districtOfResidence' id='districtResidence' required>
 								<option>Choose</option>
@@ -105,9 +105,10 @@
 							<span class="label">Primary Language in Home</span><br>
 							<input name='language' id='language' placeholder='Language' type='text'>
 						</div>
-						<div class="small-3 columns end">
-							<span class="label">Parent Active or Inactive Duty Military?</span><br>
+						<div class="small-4 columns end">
+							<br>
 							<input type='checkbox' name='military' id="military" value='1'>
+							<label for="military">Parent Active or Inactive Duty Military?</label>
 						</div>
 					</div>
 					<div class="row">
@@ -120,7 +121,6 @@
 							<input name='studentZip' id='studentZip' placeholder='Zip' type='text' required>
 						</div>
 						<input name="studentCity" id="studentCity" type="hidden"><input name="studentState" id="studentState" type="hidden">
-
 						<div class="small-2 columns">
 							<span class="label">County</span><br>
 							<select name='county' id='county' required>
@@ -134,6 +134,10 @@
 							</select>
 						</div>
 						<div class="small-2 columns">
+							<span class="label">Primary Phone</span><br>
+							<input name='primaryPhone' id='primaryPhone' placeholder='Phone' type='tel' required>
+						</div>
+						<div class="small-2 columns end">
 							<span class="label">Lives With</span><br>
 							<select name='livesWith' id='livesWith' required>
 								<option value="0">Choose</option>
@@ -146,15 +150,15 @@
 								<option value="7">Other</option>
 							</select>
 						</div>
-						<div class="small-3 columns end">
-							<span class="label">Student Requires Interpreter?</span><br>
-							<input type='checkbox' name='interpreter' id="interpreter" value='1'>
-						</div>
 					</div>
 					<div class="row">
 						<div class="small-7 columns end">
 							<input type='checkbox' name='homeless' id="homeless" value='1'><label for="homeless">Student
 								experiencing housing challenges that requires living outside home?</label>
+						</div>
+						<div class="small-3 columns end">
+							<input type='checkbox' name='interpreter' id="interpreter" value='1'>
+							<label for="interpreter">Student Requires Interpreter?</label>
 						</div>
 					</div>
 					<div class="row" id="homelessResidence">
